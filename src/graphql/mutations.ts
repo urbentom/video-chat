@@ -2,15 +2,24 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createTodo = /* GraphQL */ `
-  mutation CreateTodo(
-    $input: CreateTodoInput!
-    $condition: ModelTodoConditionInput
+export const createActiveCalls = /* GraphQL */ `
+  mutation CreateActiveCalls(
+    $input: CreateActiveCallsInput!
+    $condition: ModelActiveCallsConditionInput
   ) {
-    createTodo(input: $input, condition: $condition) {
+    createActiveCalls(input: $input, condition: $condition) {
       id
       name
-      description
+      offerCandidates {
+        sdp
+        type
+      }
+      answerCandidates {
+        sdp
+        type
+      }
+      offerUser
+      answerUser
       _version
       _deleted
       _lastChangedAt
@@ -19,15 +28,24 @@ export const createTodo = /* GraphQL */ `
     }
   }
 `;
-export const updateTodo = /* GraphQL */ `
-  mutation UpdateTodo(
-    $input: UpdateTodoInput!
-    $condition: ModelTodoConditionInput
+export const updateActiveCalls = /* GraphQL */ `
+  mutation UpdateActiveCalls(
+    $input: UpdateActiveCallsInput!
+    $condition: ModelActiveCallsConditionInput
   ) {
-    updateTodo(input: $input, condition: $condition) {
+    updateActiveCalls(input: $input, condition: $condition) {
       id
       name
-      description
+      offerCandidates {
+        sdp
+        type
+      }
+      answerCandidates {
+        sdp
+        type
+      }
+      offerUser
+      answerUser
       _version
       _deleted
       _lastChangedAt
@@ -36,15 +54,24 @@ export const updateTodo = /* GraphQL */ `
     }
   }
 `;
-export const deleteTodo = /* GraphQL */ `
-  mutation DeleteTodo(
-    $input: DeleteTodoInput!
-    $condition: ModelTodoConditionInput
+export const deleteActiveCalls = /* GraphQL */ `
+  mutation DeleteActiveCalls(
+    $input: DeleteActiveCallsInput!
+    $condition: ModelActiveCallsConditionInput
   ) {
-    deleteTodo(input: $input, condition: $condition) {
+    deleteActiveCalls(input: $input, condition: $condition) {
       id
       name
-      description
+      offerCandidates {
+        sdp
+        type
+      }
+      answerCandidates {
+        sdp
+        type
+      }
+      offerUser
+      answerUser
       _version
       _deleted
       _lastChangedAt

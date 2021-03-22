@@ -2,19 +2,36 @@
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 
-export type CreateTodoInput = {
+export type CreateActiveCallsInput = {
   id?: string | null,
   name: string,
-  description?: string | null,
+  offerCandidates?: RTCSessionDescriptionInput | null,
+  answerCandidates?: RTCSessionDescriptionInput | null,
+  offerUser?: string | null,
+  answerUser?: string | null,
   _version?: number | null,
 };
 
-export type ModelTodoConditionInput = {
+export type RTCSessionDescriptionInput = {
+  sdp: string,
+  type: RTCSdpType,
+};
+
+export enum RTCSdpType {
+  ANSWER = "ANSWER",
+  OFFER = "OFFER",
+  PRANSWER = "PRANSWER",
+  ROLLBACK = "ROLLBACK",
+}
+
+
+export type ModelActiveCallsConditionInput = {
   name?: ModelStringInput | null,
-  description?: ModelStringInput | null,
-  and?: Array< ModelTodoConditionInput | null > | null,
-  or?: Array< ModelTodoConditionInput | null > | null,
-  not?: ModelTodoConditionInput | null,
+  offerUser?: ModelStringInput | null,
+  answerUser?: ModelStringInput | null,
+  and?: Array< ModelActiveCallsConditionInput | null > | null,
+  or?: Array< ModelActiveCallsConditionInput | null > | null,
+  not?: ModelActiveCallsConditionInput | null,
 };
 
 export type ModelStringInput = {
@@ -57,11 +74,14 @@ export type ModelSizeInput = {
   between?: Array< number | null > | null,
 };
 
-export type Todo = {
-  __typename: "Todo",
+export type ActiveCalls = {
+  __typename: "ActiveCalls",
   id?: string,
   name?: string,
-  description?: string | null,
+  offerCandidates?: RTCSessionDescription,
+  answerCandidates?: RTCSessionDescription,
+  offerUser?: string | null,
+  answerUser?: string | null,
   _version?: number,
   _deleted?: boolean | null,
   _lastChangedAt?: number,
@@ -69,25 +89,35 @@ export type Todo = {
   updatedAt?: string,
 };
 
-export type UpdateTodoInput = {
+export type RTCSessionDescription = {
+  __typename: "RTCSessionDescription",
+  sdp?: string,
+  type?: RTCSdpType,
+};
+
+export type UpdateActiveCallsInput = {
   id: string,
   name?: string | null,
-  description?: string | null,
+  offerCandidates?: RTCSessionDescriptionInput | null,
+  answerCandidates?: RTCSessionDescriptionInput | null,
+  offerUser?: string | null,
+  answerUser?: string | null,
   _version?: number | null,
 };
 
-export type DeleteTodoInput = {
+export type DeleteActiveCallsInput = {
   id?: string | null,
   _version?: number | null,
 };
 
-export type ModelTodoFilterInput = {
+export type ModelActiveCallsFilterInput = {
   id?: ModelIDInput | null,
   name?: ModelStringInput | null,
-  description?: ModelStringInput | null,
-  and?: Array< ModelTodoFilterInput | null > | null,
-  or?: Array< ModelTodoFilterInput | null > | null,
-  not?: ModelTodoFilterInput | null,
+  offerUser?: ModelStringInput | null,
+  answerUser?: ModelStringInput | null,
+  and?: Array< ModelActiveCallsFilterInput | null > | null,
+  or?: Array< ModelActiveCallsFilterInput | null > | null,
+  not?: ModelActiveCallsFilterInput | null,
 };
 
 export type ModelIDInput = {
@@ -106,24 +136,35 @@ export type ModelIDInput = {
   size?: ModelSizeInput | null,
 };
 
-export type ModelTodoConnection = {
-  __typename: "ModelTodoConnection",
-  items?:  Array<Todo | null > | null,
+export type ModelActiveCallsConnection = {
+  __typename: "ModelActiveCallsConnection",
+  items?:  Array<ActiveCalls | null > | null,
   nextToken?: string | null,
   startedAt?: number | null,
 };
 
-export type CreateTodoMutationVariables = {
-  input?: CreateTodoInput,
-  condition?: ModelTodoConditionInput | null,
+export type CreateActiveCallsMutationVariables = {
+  input?: CreateActiveCallsInput,
+  condition?: ModelActiveCallsConditionInput | null,
 };
 
-export type CreateTodoMutation = {
-  createTodo?:  {
-    __typename: "Todo",
+export type CreateActiveCallsMutation = {
+  createActiveCalls?:  {
+    __typename: "ActiveCalls",
     id: string,
     name: string,
-    description?: string | null,
+    offerCandidates?:  {
+      __typename: "RTCSessionDescription",
+      sdp: string,
+      type: RTCSdpType,
+    } | null,
+    answerCandidates?:  {
+      __typename: "RTCSessionDescription",
+      sdp: string,
+      type: RTCSdpType,
+    } | null,
+    offerUser?: string | null,
+    answerUser?: string | null,
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
@@ -132,17 +173,28 @@ export type CreateTodoMutation = {
   } | null,
 };
 
-export type UpdateTodoMutationVariables = {
-  input?: UpdateTodoInput,
-  condition?: ModelTodoConditionInput | null,
+export type UpdateActiveCallsMutationVariables = {
+  input?: UpdateActiveCallsInput,
+  condition?: ModelActiveCallsConditionInput | null,
 };
 
-export type UpdateTodoMutation = {
-  updateTodo?:  {
-    __typename: "Todo",
+export type UpdateActiveCallsMutation = {
+  updateActiveCalls?:  {
+    __typename: "ActiveCalls",
     id: string,
     name: string,
-    description?: string | null,
+    offerCandidates?:  {
+      __typename: "RTCSessionDescription",
+      sdp: string,
+      type: RTCSdpType,
+    } | null,
+    answerCandidates?:  {
+      __typename: "RTCSessionDescription",
+      sdp: string,
+      type: RTCSdpType,
+    } | null,
+    offerUser?: string | null,
+    answerUser?: string | null,
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
@@ -151,17 +203,28 @@ export type UpdateTodoMutation = {
   } | null,
 };
 
-export type DeleteTodoMutationVariables = {
-  input?: DeleteTodoInput,
-  condition?: ModelTodoConditionInput | null,
+export type DeleteActiveCallsMutationVariables = {
+  input?: DeleteActiveCallsInput,
+  condition?: ModelActiveCallsConditionInput | null,
 };
 
-export type DeleteTodoMutation = {
-  deleteTodo?:  {
-    __typename: "Todo",
+export type DeleteActiveCallsMutation = {
+  deleteActiveCalls?:  {
+    __typename: "ActiveCalls",
     id: string,
     name: string,
-    description?: string | null,
+    offerCandidates?:  {
+      __typename: "RTCSessionDescription",
+      sdp: string,
+      type: RTCSdpType,
+    } | null,
+    answerCandidates?:  {
+      __typename: "RTCSessionDescription",
+      sdp: string,
+      type: RTCSdpType,
+    } | null,
+    offerUser?: string | null,
+    answerUser?: string | null,
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
@@ -170,21 +233,32 @@ export type DeleteTodoMutation = {
   } | null,
 };
 
-export type SyncTodosQueryVariables = {
-  filter?: ModelTodoFilterInput | null,
+export type SyncActiveCallsQueryVariables = {
+  filter?: ModelActiveCallsFilterInput | null,
   limit?: number | null,
   nextToken?: string | null,
   lastSync?: number | null,
 };
 
-export type SyncTodosQuery = {
-  syncTodos?:  {
-    __typename: "ModelTodoConnection",
+export type SyncActiveCallsQuery = {
+  syncActiveCalls?:  {
+    __typename: "ModelActiveCallsConnection",
     items?:  Array< {
-      __typename: "Todo",
+      __typename: "ActiveCalls",
       id: string,
       name: string,
-      description?: string | null,
+      offerCandidates?:  {
+        __typename: "RTCSessionDescription",
+        sdp: string,
+        type: RTCSdpType,
+      } | null,
+      answerCandidates?:  {
+        __typename: "RTCSessionDescription",
+        sdp: string,
+        type: RTCSdpType,
+      } | null,
+      offerUser?: string | null,
+      answerUser?: string | null,
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
@@ -196,16 +270,27 @@ export type SyncTodosQuery = {
   } | null,
 };
 
-export type GetTodoQueryVariables = {
+export type GetActiveCallsQueryVariables = {
   id?: string,
 };
 
-export type GetTodoQuery = {
-  getTodo?:  {
-    __typename: "Todo",
+export type GetActiveCallsQuery = {
+  getActiveCalls?:  {
+    __typename: "ActiveCalls",
     id: string,
     name: string,
-    description?: string | null,
+    offerCandidates?:  {
+      __typename: "RTCSessionDescription",
+      sdp: string,
+      type: RTCSdpType,
+    } | null,
+    answerCandidates?:  {
+      __typename: "RTCSessionDescription",
+      sdp: string,
+      type: RTCSdpType,
+    } | null,
+    offerUser?: string | null,
+    answerUser?: string | null,
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
@@ -214,20 +299,31 @@ export type GetTodoQuery = {
   } | null,
 };
 
-export type ListTodosQueryVariables = {
-  filter?: ModelTodoFilterInput | null,
+export type ListActiveCallssQueryVariables = {
+  filter?: ModelActiveCallsFilterInput | null,
   limit?: number | null,
   nextToken?: string | null,
 };
 
-export type ListTodosQuery = {
-  listTodos?:  {
-    __typename: "ModelTodoConnection",
+export type ListActiveCallssQuery = {
+  listActiveCallss?:  {
+    __typename: "ModelActiveCallsConnection",
     items?:  Array< {
-      __typename: "Todo",
+      __typename: "ActiveCalls",
       id: string,
       name: string,
-      description?: string | null,
+      offerCandidates?:  {
+        __typename: "RTCSessionDescription",
+        sdp: string,
+        type: RTCSdpType,
+      } | null,
+      answerCandidates?:  {
+        __typename: "RTCSessionDescription",
+        sdp: string,
+        type: RTCSdpType,
+      } | null,
+      offerUser?: string | null,
+      answerUser?: string | null,
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
@@ -239,12 +335,23 @@ export type ListTodosQuery = {
   } | null,
 };
 
-export type OnCreateTodoSubscription = {
-  onCreateTodo?:  {
-    __typename: "Todo",
+export type OnCreateActiveCallsSubscription = {
+  onCreateActiveCalls?:  {
+    __typename: "ActiveCalls",
     id: string,
     name: string,
-    description?: string | null,
+    offerCandidates?:  {
+      __typename: "RTCSessionDescription",
+      sdp: string,
+      type: RTCSdpType,
+    } | null,
+    answerCandidates?:  {
+      __typename: "RTCSessionDescription",
+      sdp: string,
+      type: RTCSdpType,
+    } | null,
+    offerUser?: string | null,
+    answerUser?: string | null,
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
@@ -253,12 +360,23 @@ export type OnCreateTodoSubscription = {
   } | null,
 };
 
-export type OnUpdateTodoSubscription = {
-  onUpdateTodo?:  {
-    __typename: "Todo",
+export type OnUpdateActiveCallsSubscription = {
+  onUpdateActiveCalls?:  {
+    __typename: "ActiveCalls",
     id: string,
     name: string,
-    description?: string | null,
+    offerCandidates?:  {
+      __typename: "RTCSessionDescription",
+      sdp: string,
+      type: RTCSdpType,
+    } | null,
+    answerCandidates?:  {
+      __typename: "RTCSessionDescription",
+      sdp: string,
+      type: RTCSdpType,
+    } | null,
+    offerUser?: string | null,
+    answerUser?: string | null,
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
@@ -267,12 +385,23 @@ export type OnUpdateTodoSubscription = {
   } | null,
 };
 
-export type OnDeleteTodoSubscription = {
-  onDeleteTodo?:  {
-    __typename: "Todo",
+export type OnDeleteActiveCallsSubscription = {
+  onDeleteActiveCalls?:  {
+    __typename: "ActiveCalls",
     id: string,
     name: string,
-    description?: string | null,
+    offerCandidates?:  {
+      __typename: "RTCSessionDescription",
+      sdp: string,
+      type: RTCSdpType,
+    } | null,
+    answerCandidates?:  {
+      __typename: "RTCSessionDescription",
+      sdp: string,
+      type: RTCSdpType,
+    } | null,
+    offerUser?: string | null,
+    answerUser?: string | null,
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,

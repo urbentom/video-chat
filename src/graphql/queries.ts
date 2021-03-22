@@ -2,14 +2,14 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const syncTodos = /* GraphQL */ `
-  query SyncTodos(
-    $filter: ModelTodoFilterInput
+export const syncActiveCalls = /* GraphQL */ `
+  query SyncActiveCalls(
+    $filter: ModelActiveCallsFilterInput
     $limit: Int
     $nextToken: String
     $lastSync: AWSTimestamp
   ) {
-    syncTodos(
+    syncActiveCalls(
       filter: $filter
       limit: $limit
       nextToken: $nextToken
@@ -18,7 +18,16 @@ export const syncTodos = /* GraphQL */ `
       items {
         id
         name
-        description
+        offerCandidates {
+          sdp
+          type
+        }
+        answerCandidates {
+          sdp
+          type
+        }
+        offerUser
+        answerUser
         _version
         _deleted
         _lastChangedAt
@@ -30,12 +39,21 @@ export const syncTodos = /* GraphQL */ `
     }
   }
 `;
-export const getTodo = /* GraphQL */ `
-  query GetTodo($id: ID!) {
-    getTodo(id: $id) {
+export const getActiveCalls = /* GraphQL */ `
+  query GetActiveCalls($id: ID!) {
+    getActiveCalls(id: $id) {
       id
       name
-      description
+      offerCandidates {
+        sdp
+        type
+      }
+      answerCandidates {
+        sdp
+        type
+      }
+      offerUser
+      answerUser
       _version
       _deleted
       _lastChangedAt
@@ -44,17 +62,26 @@ export const getTodo = /* GraphQL */ `
     }
   }
 `;
-export const listTodos = /* GraphQL */ `
-  query ListTodos(
-    $filter: ModelTodoFilterInput
+export const listActiveCallss = /* GraphQL */ `
+  query ListActiveCallss(
+    $filter: ModelActiveCallsFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listTodos(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listActiveCallss(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
         name
-        description
+        offerCandidates {
+          sdp
+          type
+        }
+        answerCandidates {
+          sdp
+          type
+        }
+        offerUser
+        answerUser
         _version
         _deleted
         _lastChangedAt

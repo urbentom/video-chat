@@ -2,10 +2,17 @@
 import { initSchema } from '@aws-amplify/datastore';
 import { schema } from './schema';
 
+const RtcSdpType = {
+  "ANSWER": "ANSWER",
+  "OFFER": "OFFER",
+  "PRANSWER": "PRANSWER",
+  "ROLLBACK": "ROLLBACK"
+};
 
-
-const { Todo } = initSchema(schema);
+const { ActiveCalls, RTCSessionDescription } = initSchema(schema);
 
 export {
-  Todo
+  ActiveCalls,
+  RtcSdpType,
+  RTCSessionDescription
 };

@@ -1,5 +1,23 @@
-type Todo @model {
-  id: ID!
-  name: String!
-  description: String
+type ActiveCalls 
+    @model 
+    @auth( rules: [{allow: private}])
+    {
+    id: ID!
+    name: String!
+    offerCandidates: RTCSessionDescription
+    answerCandidates: RTCSessionDescription
+    offerUser: String
+    answerUser: String
+}
+
+type RTCSessionDescription {
+    sdp: String!
+    type: RTCSdpType!
+}
+
+enum RTCSdpType {
+    ANSWER,
+    OFFER,
+    PRANSWER,
+    ROLLBACK,
 }

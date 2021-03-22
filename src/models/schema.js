@@ -1,7 +1,7 @@
 export const schema = {
     "models": {
-        "Todo": {
-            "name": "Todo",
+        "ActiveCalls": {
+            "name": "ActiveCalls",
             "fields": {
                 "id": {
                     "name": "id",
@@ -17,8 +17,33 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "description": {
-                    "name": "description",
+                "offerCandidates": {
+                    "name": "offerCandidates",
+                    "isArray": false,
+                    "type": {
+                        "nonModel": "RTCSessionDescription"
+                    },
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "answerCandidates": {
+                    "name": "answerCandidates",
+                    "isArray": false,
+                    "type": {
+                        "nonModel": "RTCSessionDescription"
+                    },
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "offerUser": {
+                    "name": "offerUser",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "answerUser": {
+                    "name": "answerUser",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
@@ -26,16 +51,64 @@ export const schema = {
                 }
             },
             "syncable": true,
-            "pluralName": "Todos",
+            "pluralName": "ActiveCalls",
             "attributes": [
                 {
                     "type": "model",
                     "properties": {}
+                },
+                {
+                    "type": "auth",
+                    "properties": {
+                        "rules": [
+                            {
+                                "allow": "private",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
+                            }
+                        ]
+                    }
                 }
             ]
         }
     },
-    "enums": {},
-    "nonModels": {},
-    "version": "1e935267ff3bf73800b32443538139cb"
+    "enums": {
+        "RtcSdpType": {
+            "name": "RtcSdpType",
+            "values": [
+                "ANSWER",
+                "OFFER",
+                "PRANSWER",
+                "ROLLBACK"
+            ]
+        }
+    },
+    "nonModels": {
+        "RTCSessionDescription": {
+            "name": "RTCSessionDescription",
+            "fields": {
+                "sdp": {
+                    "name": "sdp",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "type": {
+                    "name": "type",
+                    "isArray": false,
+                    "type": {
+                        "enum": "RtcSdpType"
+                    },
+                    "isRequired": true,
+                    "attributes": []
+                }
+            }
+        }
+    },
+    "version": "ef7f391b0c42e99368a7ad77564a9635"
 };
