@@ -1,22 +1,28 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import styled from 'styled-components';
+// TODO: Make custom auth in the future, this will do for now
+import { withAuthenticator } from '@aws-amplify/ui-react';
 
-import HomeScreen from './screens/HomeScreen';
+// Import Main Router
+import Router from './router';
+
+import { AuthContextProvider } from './contexts/AuthContext';
+
+// Configure Amplify with aws export file
+import Amplify from 'aws-amplify';
+import awsconfig from './aws-exports';
+
+Amplify.configure(awsconfig);
 
 function App() {
 	return (
 		<Wrapper>
-			<Router>
-				<Switch>
-					<Route exact path="/" component={HomeScreen} />
-				</Switch>
-			</Router>
+			<Router />
 		</Wrapper>
 	);
 }
 
-export default App;
+export default withAuthenticator(App);
 
 const Wrapper = styled.div`
 	height: 100vh;
